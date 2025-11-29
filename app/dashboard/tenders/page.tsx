@@ -16,7 +16,7 @@ export default async function TendersDashboard() {
                 <div className="flex justify-between items-center mb-8">
                     <div>
                         <h1 className="text-3xl font-bold text-slate-900">My Tenders</h1>
-                        <p className="mt-2 text-slate-600">Manage your active RFQs and contracts.</p>
+                        <p className="mt-2 text-black">Manage your active RFQs and contracts.</p>
                     </div>
                     <Link
                         href="/sourcing/new"
@@ -28,7 +28,7 @@ export default async function TendersDashboard() {
                 </div>
 
                 <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-                    <div className="p-4 border-b border-slate-100 bg-slate-50 flex font-medium text-sm text-slate-500">
+                    <div className="p-4 border-b border-slate-100 bg-slate-50 flex font-medium text-sm text-black">
                         <div className="flex-1">Tender Details</div>
                         <div className="w-64">Status & Type</div>
                     </div>
@@ -39,7 +39,7 @@ export default async function TendersDashboard() {
                                 <Plus className="w-8 h-8 text-slate-400" />
                             </div>
                             <h3 className="text-lg font-medium text-slate-900">No active tenders</h3>
-                            <p className="text-slate-500 mt-2 mb-6">Start sourcing chemicals by creating your first tender.</p>
+                            <p className="text-black mt-2 mb-6">Start sourcing chemicals by creating your first tender.</p>
                             <Link
                                 href="/sourcing/new"
                                 className="inline-flex items-center px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 font-medium transition-colors"

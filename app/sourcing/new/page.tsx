@@ -166,7 +166,7 @@ export default function SourcingWizard() {
                             </div>
 
                             <div className="flex justify-between pt-6 border-t border-slate-100">
-                                <button onClick={() => setStep(1)} className="flex items-center px-6 py-3 text-slate-600 hover:bg-slate-50 rounded-lg font-medium">
+                                <button onClick={() => setStep(1)} className="flex items-center px-6 py-3 text-black hover:bg-slate-50 rounded-lg font-medium">
                                     <ArrowLeft className="mr-2 w-4 h-4" /> Back
                                 </button>
                                 <button
@@ -198,7 +198,7 @@ export default function SourcingWizard() {
                                         />
                                         <div className="ml-4">
                                             <span className="block font-medium text-slate-900">Invite All Matching Suppliers</span>
-                                            <span className="block text-sm text-slate-500">Automatically notify all verified suppliers who sell these products.</span>
+                                            <span className="block text-sm text-black">Automatically notify all verified suppliers who sell these products.</span>
                                         </div>
                                     </label>
 
@@ -213,7 +213,7 @@ export default function SourcingWizard() {
                                         />
                                         <div className="ml-4">
                                             <span className="block font-medium text-slate-900">Invite Specific Suppliers</span>
-                                            <span className="block text-sm text-slate-500">Manually select from your approved supplier list.</span>
+                                            <span className="block text-sm text-black">Manually select from your approved supplier list.</span>
                                         </div>
                                     </label>
                                 </div>
@@ -229,7 +229,7 @@ export default function SourcingWizard() {
                             </div>
 
                             <div className="flex justify-between pt-6 border-t border-slate-100">
-                                <button onClick={() => setStep(2)} className="flex items-center px-6 py-3 text-slate-600 hover:bg-slate-50 rounded-lg font-medium">
+                                <button onClick={() => setStep(2)} className="flex items-center px-6 py-3 text-black hover:bg-slate-50 rounded-lg font-medium">
                                     <ArrowLeft className="mr-2 w-4 h-4" /> Back
                                 </button>
                                 <button

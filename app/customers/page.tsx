@@ -4,7 +4,7 @@ export default function CustomersPage() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h1 className="text-4xl font-bold text-slate-900 mb-4">Customer Success Stories</h1>
-                    <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                    <p className="text-xl text-black max-w-3xl mx-auto">
                         See how leading chemical companies are transforming their supply chains with ChemSphere Nexus.
                     </p>
                 </div>
@@ -18,7 +18,7 @@ export default function CustomersPage() {
                             <div className="p-6">
                                 <div className="text-sm text-teal-600 font-semibold mb-2">Pharma Industry</div>
                                 <h3 className="text-xl font-bold text-slate-900 mb-3">Reducing Sourcing Time by 50%</h3>
-                                <p className="text-slate-600 mb-4">
+                                <p className="text-black mb-4">
                                     How a leading pharmaceutical manufacturer streamlined their raw material procurement using our automated RFQ engine.
                                 </p>
                                 <a href="#" className="text-teal-600 font-medium hover:underline">Read Story &rarr;</a>

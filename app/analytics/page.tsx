@@ -43,7 +43,7 @@ export default function AnalyticsPage() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold text-slate-900">Market Intelligence</h1>
-                    <p className="mt-2 text-slate-600">Real-time price benchmarking and trend analysis.</p>
+                    <p className="mt-2 text-black">Real-time price benchmarking and trend analysis.</p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -67,13 +67,13 @@ export default function AnalyticsPage() {
 
                         {selectedProduct && (
                             <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                                <h3 className="text-sm font-medium text-slate-500 mb-1">Current Market Price</h3>
+                                <h3 className="text-sm font-medium text-black mb-1">Current Market Price</h3>
                                 <div className="flex items-baseline gap-2">
                                     <span className="text-3xl font-bold text-slate-900">€{currentPrice.toFixed(2)}</span>
-                                    <span className="text-sm text-slate-500">/ MT</span>
+                                    <span className="text-sm text-black">/ MT</span>
                                 </div>
 
-                                <div className={`flex items-center mt-2 text-sm font-medium ${priceChange > 0 ? 'text-red-600' : priceChange < 0 ? 'text-green-600' : 'text-slate-600'}`}>
+                                <div className={`flex items-center mt-2 text-sm font-medium ${priceChange > 0 ? 'text-red-600' : priceChange < 0 ? 'text-green-600' : 'text-black'}`}>
                                     {priceChange > 0 ? <TrendingUp className="w-4 h-4 mr-1" /> : priceChange < 0 ? <TrendingDown className="w-4 h-4 mr-1" /> : <Minus className="w-4 h-4 mr-1" />}
                                     {Math.abs(percentChange).toFixed(2)}% vs last month
                                 </div>
@@ -107,7 +107,7 @@ export default function AnalyticsPage() {
                                     <h2 className="text-lg font-semibold text-slate-900">{selectedProduct.iupac_name} Price Trend</h2>
                                     <div className="flex gap-2">
                                         {['3M', '6M', '1Y', 'YTD'].map(range => (
-                                            <button key={range} className="px-3 py-1 text-xs font-medium text-slate-600 hover:bg-slate-100 rounded-full">
+                                            <button key={range} className="px-3 py-1 text-xs font-medium text-black hover:bg-slate-100 rounded-full">
                                                 {range}
                                             </button>
                                         ))}

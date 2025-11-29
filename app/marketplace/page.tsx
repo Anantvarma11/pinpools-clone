@@ -37,7 +37,7 @@ export default async function MarketplacePage({
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="mb-8">
                     <h1 className="text-3xl font-bold text-slate-900">Global Chemical Marketplace</h1>
-                    <p className="mt-2 text-slate-600">Source verified chemicals from top global suppliers.</p>
+                    <p className="mt-2 text-black">Source verified chemicals from top global suppliers.</p>
                 </div>
 
                 <MarketplaceFilters />
@@ -50,7 +50,7 @@ export default async function MarketplacePage({
 
                 {products.length === 0 && (
                     <div className="text-center py-12">
-                        <p className="text-slate-500">No products found matching your criteria.</p>
+                        <p className="text-black">No products found matching your criteria.</p>
                     </div>
                 )}
             </div>

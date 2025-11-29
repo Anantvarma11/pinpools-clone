@@ -50,7 +50,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
                             <p className="text-sm font-medium text-slate-900 dark:text-white truncate">
                                 {user.name}
                             </p>
-                            <p className="text-xs text-slate-500 dark:text-slate-400 truncate">
+                            <p className="text-xs text-black dark:text-slate-400 truncate">
                                 {user.email}
                             </p>
                         </div>

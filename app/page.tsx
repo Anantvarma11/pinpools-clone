@@ -34,7 +34,7 @@ export default function Home() {
       {/* Social Proof */}
       <section className="py-10 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm font-semibold text-slate-500 uppercase tracking-wider mb-6">
+          <p className="text-center text-sm font-semibold text-black uppercase tracking-wider mb-6">
             Trusted by Industry Leaders
           </p>
           <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale">
@@ -54,7 +54,7 @@ export default function Home() {
                 <CheckCircle className="w-8 h-8 text-teal-600" />
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-4">Automated Sourcing</h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Launch RFQs in minutes. Our smart matching algorithm connects you with pre-vetted suppliers instantly.
               </p>
             </div>
@@ -65,7 +65,7 @@ export default function Home() {
               <Link href="/product/data-cube" className="hover:text-teal-600 transition-colors">
                 <h3 className="text-xl font-bold text-slate-900 mb-4">Market Intelligence</h3>
               </Link>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Access real-time price benchmarks and historical data to negotiate better contracts.
               </p>
             </div>
@@ -74,7 +74,7 @@ export default function Home() {
                 <ShieldCheck className="w-8 h-8 text-purple-600" />
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-4">Verified Quality</h3>
-              <p className="text-slate-600">
+              <p className="text-black">
                 Every supplier is audited. Ensure compliance with REACH, ISO, and sustainability standards.
               </p>
             </div>
@@ -88,7 +88,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white p-10 rounded-2xl shadow-sm border border-slate-200">
               <h3 className="text-2xl font-bold text-slate-900 mb-4">For Buyers</h3>
-              <p className="text-slate-600 mb-8">
+              <p className="text-black mb-8">
                 Reduce procurement costs by up to 15% and cut sourcing time by 70%. Access a global network of trusted chemical suppliers.
               </p>
               <Link href="/product/sourcing" className="text-teal-600 font-semibold hover:text-teal-700 flex items-center">

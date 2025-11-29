@@ -21,7 +21,7 @@ export function TenderRow({ tender }: TenderRowProps) {
                 </div>
                 <div>
                     <h4 className="font-medium text-slate-900 dark:text-slate-100">RFQ #{tender.id.slice(0, 8)}</h4>
-                    <div className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400 mt-1">
+                    <div className="flex items-center gap-3 text-sm text-black dark:text-slate-400 mt-1">
                         <span className="flex items-center">
                             <Calendar className="w-3 h-3 mr-1" />
                             {new Date(tender.createdAt).toLocaleDateString()}
@@ -38,7 +38,7 @@ export function TenderRow({ tender }: TenderRowProps) {
                 <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${statusColors[tender.status]}`}>
                     {tender.status}
                 </span>
-                <span className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                <span className="text-sm font-medium text-black dark:text-slate-400">
                     {tender.type}
                 </span>
                 <button className="text-sm text-teal-600 hover:text-teal-700 font-medium">

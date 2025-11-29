@@ -29,29 +29,29 @@ export default function SuppliersPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl font-bold text-slate-900">Why Join ChemSphere?</h2>
-                        <p className="mt-4 text-lg text-slate-600">Built for modern chemical suppliers.</p>
+                        <p className="mt-4 text-lg text-black">Built for modern chemical suppliers.</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         <div className="p-6 bg-slate-50 rounded-xl border border-slate-100">
                             <Globe2 className="w-10 h-10 text-teal-600 mb-4" />
                             <h3 className="text-xl font-semibold text-slate-900 mb-2">Global Reach</h3>
-                            <p className="text-slate-600">Access a worldwide network of verified buyers actively looking for your products.</p>
+                            <p className="text-black">Access a worldwide network of verified buyers actively looking for your products.</p>
                         </div>
                         <div className="p-6 bg-slate-50 rounded-xl border border-slate-100">
                             <BarChart3 className="w-10 h-10 text-blue-600 mb-4" />
                             <h3 className="text-xl font-semibold text-slate-900 mb-2">Market Insights</h3>
-                            <p className="text-slate-600">Get real-time data on pricing trends and demand to optimize your sales strategy.</p>
+                            <p className="text-black">Get real-time data on pricing trends and demand to optimize your sales strategy.</p>
                         </div>
                         <div className="p-6 bg-slate-50 rounded-xl border border-slate-100">
                             <Users className="w-10 h-10 text-purple-600 mb-4" />
                             <h3 className="text-xl font-semibold text-slate-900 mb-2">Qualified Leads</h3>
-                            <p className="text-slate-600">Receive high-quality RFQs directly to your dashboard. No more cold calling.</p>
+                            <p className="text-black">Receive high-quality RFQs directly to your dashboard. No more cold calling.</p>
                         </div>
                         <div className="p-6 bg-slate-50 rounded-xl border border-slate-100">
                             <ShieldCheck className="w-10 h-10 text-green-600 mb-4" />
                             <h3 className="text-xl font-semibold text-slate-900 mb-2">Secure Trading</h3>
-                            <p className="text-slate-600">Benefit from our secure platform with verified counterparties and transparent processes.</p>
+                            <p className="text-black">Benefit from our secure platform with verified counterparties and transparent processes.</p>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ export default function SuppliersPage() {
             <section className="py-20 bg-slate-50">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h2 className="text-3xl font-bold text-slate-900 mb-6">Ready to expand your business?</h2>
-                    <p className="text-lg text-slate-600 mb-8">
+                    <p className="text-lg text-black mb-8">
                         Join hundreds of leading suppliers already trading on ChemSphere Nexus.
                     </p>
                     <Link

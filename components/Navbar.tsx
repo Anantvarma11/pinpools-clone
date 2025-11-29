@@ -26,7 +26,7 @@ export default function Navbar({ user }: NavbarProps) {
                                 href="/product/sourcing"
                                 className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${pathname === '/product/sourcing'
                                         ? 'text-teal-600 border-b-2 border-teal-600'
-                                        : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                                        : 'text-black dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
                                     }`}
                             >
                                 Sourcing
@@ -35,7 +35,7 @@ export default function Navbar({ user }: NavbarProps) {
                                 href="/suppliers"
                                 className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${pathname === '/suppliers'
                                         ? 'text-teal-600 border-b-2 border-teal-600'
-                                        : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                                        : 'text-black dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
                                     }`}
                             >
                                 Suppliers
@@ -44,7 +44,7 @@ export default function Navbar({ user }: NavbarProps) {
                                 href="/marketplace"
                                 className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${pathname === '/marketplace'
                                         ? 'text-teal-600 border-b-2 border-teal-600'
-                                        : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                                        : 'text-black dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
                                     }`}
                             >
                                 Marketplace
@@ -56,7 +56,7 @@ export default function Navbar({ user }: NavbarProps) {
                             <>
                                 <Link
                                     href="/dashboard/tenders"
-                                    className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
+                                    className="text-sm font-medium text-black dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
                                 >
                                     Dashboard
                                 </Link>
@@ -73,7 +73,7 @@ export default function Navbar({ user }: NavbarProps) {
                             <>
                                 <Link
                                     href="/auth/login"
-                                    className="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
+                                    className="text-sm font-medium text-black dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
                                 >
                                     Log In
                                 </Link>

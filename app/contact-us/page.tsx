@@ -4,7 +4,7 @@ export default function ContactPage() {
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
                     <h1 className="text-4xl font-bold text-slate-900 mb-4">Contact Us</h1>
-                    <p className="text-xl text-slate-600">
+                    <p className="text-xl text-black">
                         Have questions? Our team is here to help you optimize your chemical procurement.
                     </p>
                 </div>

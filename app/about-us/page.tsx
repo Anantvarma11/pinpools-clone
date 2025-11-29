@@ -4,7 +4,7 @@ export default function AboutPage() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h1 className="text-4xl font-bold text-slate-900 mb-4">About ChemSphere Nexus</h1>
-                    <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                    <p className="text-xl text-black max-w-3xl mx-auto">
                         We are on a mission to digitize the $5 trillion chemical industry, making procurement transparent, efficient, and sustainable.
                     </p>
                 </div>
@@ -12,10 +12,10 @@ export default function AboutPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
                     <div>
                         <h2 className="text-3xl font-bold text-slate-900 mb-6">Our Story</h2>
-                        <p className="text-slate-600 mb-4">
+                        <p className="text-black mb-4">
                             Founded in 2024, ChemSphere Nexus emerged from a simple observation: while the world has gone digital, chemical procurement remained stuck in emails, spreadsheets, and opaque phone calls.
                         </p>
-                        <p className="text-slate-600">
+                        <p className="text-black">
                             We built a platform that brings the ease of consumer e-commerce to complex B2B industrial supply chains, without compromising on the rigorous compliance and quality standards the industry demands.
                         </p>
                     </div>

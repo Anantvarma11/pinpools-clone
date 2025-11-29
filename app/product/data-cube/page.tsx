@@ -6,7 +6,7 @@ export default function DataCubeProductPage() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h1 className="text-4xl font-bold text-slate-900 mb-4">Data Cube Analytics</h1>
-                    <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+                    <p className="text-xl text-black max-w-3xl mx-auto">
                         Make data-driven procurement decisions with real-time market intelligence.
                     </p>
                 </div>

@@ -15,7 +15,7 @@ interface BenchmarkChartProps {
 export function BenchmarkChart({ data, currency }: BenchmarkChartProps) {
     return (
         <div className="h-[300px] w-full bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
-            <h3 className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-4">Price Trend (90 Days)</h3>
+            <h3 className="text-sm font-medium text-black dark:text-slate-400 mb-4">Price Trend (90 Days)</h3>
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={data}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
