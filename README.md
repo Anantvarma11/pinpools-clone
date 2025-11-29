@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ChemSphere Nexus
+
+**The Operating System for Agile Chemical Procurement.**
+
+ChemSphere Nexus is a B2B Chemical Marketplace Application designed to streamline sourcing, provide real-time market intelligence, and offer verified global inventory.
+
+## Core Pillars
+
+* **Sourcing:** Automated RFX & Spot Buying.
+* **Intelligence:** Real-time Price Benchmarking & Risk Analysis.
+* **Marketplace:** Verified Global Inventory.
+
+## Sitemap
+
+### Public Routes
+
+* `/` (Home): Hero section, Start Sourcing CTA, Live Market Ticker.
+* `/features/sourcing`: Automated RFQ workflows, sustainability scoring.
+* `/features/market-intelligence`: Price analytics.
+* `/marketplace`: Public catalog with faceted search.
+* `/suppliers`: Value prop for distributors.
+* `/success-stories`: Case studies.
+* `/company/about`: About ChemSphere Nexus.
+* `/legal/imprint`: Impressum.
+* `/legal/privacy`: Privacy Policy.
+* `/legal/terms`: Terms of Service.
+
+### App Routes (Protected)
+
+* `/auth/login`: SSO and Email login.
+* `/auth/register`: Company registration.
+* `/dashboard/buyer`: Buyer widgets (Active Tenders, Savings, Watchlist).
+* `/dashboard/supplier`: Supplier widgets (Inbound Leads, Quote Status).
+* `/sourcing/new`: RFQ Wizard.
+* `/analytics/benchmarks`: Market data charting.
+
+## Tech Stack
+
+* **Frontend:** Next.js (App Router), TypeScript, Tailwind CSS.
+* **Backend:** Next.js API Routes (Server Actions), Prisma ORM.
+* **Database:** PostgreSQL.
+* **UI Components:** Lucide Icons, Recharts, TanStack Table.
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies:**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    ```bash
+    npm install
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Set up Database:**
+    Ensure you have a PostgreSQL database running. Update `.env` with `DATABASE_URL`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    ```bash
+    npx prisma generate
+    npx prisma db push
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. **Run Development Server:**
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    ```bash
+    npm run dev
+    ```

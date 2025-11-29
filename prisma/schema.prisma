@@ -1,0 +1,108 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Product {
+  id                  String   @id @default(uuid())
+  cas_number          String
+  ec_number           String?
+  iupac_name          String
+  synonyms            String
+  purity_percentage   Float
+  grade               Grade
+  sustainability_rating Int
+  companyId           String?
+  company             Company? @relation(fields: [companyId], references: [id])
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@unique([cas_number, grade])
+}
+
+model Tender {
+  id                String       @id @default(uuid())
+  buyer_id          String
+  buyer             User         @relation(fields: [buyer_id], references: [id])
+  type              TenderType
+  status            TenderStatus @default(DRAFT)
+  line_items        Json
+  incoterms         Incoterms @default(DDP)
+  delivery_date     DateTime?
+  region            String?
+  invited_suppliers String
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+}
+
+model Market_Data {
+  id               String   @id @default(uuid())
+  cas_number       String
+  transaction_date DateTime
+  unit_price       Decimal
+  currency         String
+  volume           Float
+}
+
+model Company {
+  id        String      @id @default(uuid())
+  name      String
+  type      CompanyType
+  users     User[]
+  products  Product[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String?
+  password  String? // Placeholder for auth
+  role      UserRole
+  companyId String
+  company   Company  @relation(fields: [companyId], references: [id])
+  tenders   Tender[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Grade {
+  TECHNICAL
+  PHARMA
+  FOOD
+}
+
+enum TenderType {
+  SPOT
+  CONTRACT
+}
+
+enum TenderStatus {
+  DRAFT
+  OPEN
+  REVIEW
+  AWARDED
+}
+
+enum Incoterms {
+  DDP
+  FOB
+  EXW
+  CIF
+  CIP
+}
+
+enum CompanyType {
+  BUYER
+  SUPPLIER
+}
+
+enum UserRole {
+  ADMIN
+  USER
+}
