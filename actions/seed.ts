@@ -13,7 +13,7 @@ export async function seedProducts() {
 
         // Find or create a seller
         let seller = await prisma.user.findFirst({
-            where: { role: 'SELLER' },
+            where: { role: 'USER' },
             include: { company: true }
         });
 
@@ -22,20 +22,16 @@ export async function seedProducts() {
             const company = await prisma.company.create({
                 data: {
                     name: 'ChemCorp International',
-                    // taxId: 'DE123456789', // Removed as it might not be in schema
-                    address: 'Chemical Valley 1, Frankfurt',
-                    country: 'Germany',
                     type: 'SUPPLIER',
-                    verificationStatus: 'VERIFIED'
                 }
             });
 
             seller = await prisma.user.create({
                 data: {
                     email: 'seller@chem.com',
-                    passwordHash: '$2b$10$epWg/y.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ', // Dummy hash
+                    password: '$2b$10$epWg/y.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ', // Dummy hash
                     name: 'Demo Seller',
-                    role: 'SELLER',
+                    role: 'USER',
                     companyId: company.id
                 },
                 include: { company: true }
