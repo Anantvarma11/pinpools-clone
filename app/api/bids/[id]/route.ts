@@ -29,7 +29,7 @@ export async function GET(
                 },
                 product: true,
                 owner: {
-                    select: { name: true, kycStatus: true, creditLine: true },
+                    select: { name: true },
                 },
             },
         });

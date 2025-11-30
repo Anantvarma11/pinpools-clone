@@ -156,12 +156,24 @@ export default function SourcingWizard() {
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[500px] overflow-y-auto p-1">
                                 {products.map(product => (
-                                    <ProductCard
-                                        key={product.id}
-                                        product={product}
-                                        onSelect={toggleProduct}
-                                        isSelected={!!selectedProducts.find(p => p.id === product.id)}
-                                    />
+                                    <div key={product.id} onClick={() => toggleProduct(product)} className={`cursor-pointer border-2 rounded-lg transition-all ${!!selectedProducts.find(p => p.id === product.id) ? 'border-teal-500 ring-2 ring-teal-200' : 'border-transparent'}`}>
+                                        <ProductCard
+                                            product={{
+                                                id: product.id,
+                                                title: product.iupac_name,
+                                                casNumber: product.cas_number,
+                                                grade: product.grade,
+                                                purity: product.purity_percentage
+                                            }}
+                                            seller={{
+                                                name: 'Verified Supplier',
+                                                kycStatus: 'VERIFIED',
+                                                creditLine: 50000
+                                            }}
+                                            MOQ={`${product.moq || 1} MT`}
+                                            openBidsCount={0}
+                                        />
+                                    </div>
                                 ))}
                             </div>
 

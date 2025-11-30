@@ -9,7 +9,7 @@ export default async function IncomingOpportunitiesPage() {
     if (!session?.user) return null;
 
     // Fetch Incoming Opportunities (RFXs on my products)
-    const incomingRfxs = await prisma.RFX.findMany({
+    const incomingRfxs = await prisma.rFX.findMany({
         where: {
             product: {
                 company: {

@@ -11,7 +11,7 @@ export default async function BuyerDashboardPage() {
     if (!session?.user) return null;
 
     // Fetch My Active Requests
-    const myRfxs = await prisma.RFX.findMany({
+    const myRfxs = await prisma.rFX.findMany({
         where: {
             ownerId: session.user.id
         },

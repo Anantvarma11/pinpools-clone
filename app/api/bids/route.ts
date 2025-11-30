@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma";
 // GET: List all PUBLIC RFXs
 export async function GET(request: Request) {
     try {
-        const rfqs = await prisma.RFX.findMany({
+        const rfqs = await prisma.rFX.findMany({
             where: { mode: "PUBLIC" },
             orderBy: { createdAt: "desc" },
             include: {
@@ -43,7 +43,7 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: "User not found" }, { status: 404 });
         }
 
-        const newRfx = await prisma.RFX.create({
+        const newRfx = await prisma.rFX.create({
             data: {
                 productId,
                 ownerId: user.id,

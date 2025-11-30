@@ -18,7 +18,7 @@ export default async function SellerDashboardPage() {
     });
 
     // Fetch Public RFXs (Live Opportunities)
-    const publicRfxs = await prisma.RFX.findMany({
+    const publicRfxs = await prisma.rFX.findMany({
         where: { mode: 'PUBLIC' },
         include: {
             product: true,

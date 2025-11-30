@@ -14,7 +14,7 @@ export default async function RfxDetailPage({ params }: { params: Promise<{ id: 
 
     const { id } = await params;
 
-    const rfx = await prisma.RFX.findUnique({
+    const rfx = await prisma.rFX.findUnique({
         where: { id },
         include: {
             product: true,

@@ -9,7 +9,7 @@ export default async function MyRfxPage() {
     const session = await auth();
     if (!session?.user) return null;
 
-    const myRfxs = await prisma.RFX.findMany({
+    const myRfxs = await prisma.rFX.findMany({
         where: {
             ownerId: session.user.id
         },

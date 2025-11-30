@@ -21,7 +21,9 @@ export default function RegisterPage() {
 
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                 <div className="bg-white dark:bg-slate-900 py-8 px-4 shadow sm:rounded-lg sm:px-10 border border-slate-200 dark:border-slate-800">
-                    <form action={loginWithCredentials} className="space-y-6">
+                    <form action={async (formData) => {
+                        await loginWithCredentials(formData);
+                    }} className="space-y-6">
                         <div>
                             <label htmlFor="company" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
                                 Company Name

@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, UserRole, CompanyType, Grade } from '@prisma/client';
 import { hash } from 'crypto'; // Mock hash for password
 
 const prisma = new PrismaClient();
@@ -10,7 +10,7 @@ async function main() {
     const company = await prisma.company.create({
         data: {
             name: 'ChemCorp Global',
-            type: 'SUPPLIER',
+            type: CompanyType.SUPPLIER,
         },
     });
 
@@ -22,7 +22,7 @@ async function main() {
             email: 'seller@chem.com',
             name: 'Test Seller',
             password: 'secure123', // In real app, hash this
-            role: 'USER',
+            role: UserRole.SELLER,
             companyId: company.id,
         },
     });
@@ -31,7 +31,7 @@ async function main() {
     const buyerCompany = await prisma.company.create({
         data: {
             name: 'Buyer Inc.',
-            type: 'BUYER',
+            type: CompanyType.BUYER,
         },
     });
 
@@ -43,7 +43,7 @@ async function main() {
             email: 'buyer@chem.com',
             name: 'Test Buyer',
             password: 'secure123',
-            role: 'USER',
+            role: UserRole.BUYER,
             companyId: buyerCompany.id,
         },
     });
@@ -55,7 +55,7 @@ async function main() {
             iupac_name: 'Methanol',
             synonyms: 'Methyl Alcohol',
             purity_percentage: 99.8,
-            grade: 'TECHNICAL',
+            grade: Grade.TECHNICAL,
             sustainability_rating: 85,
             companyId: company.id,
         },
