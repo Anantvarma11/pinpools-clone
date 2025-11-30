@@ -67,7 +67,7 @@ export async function seedProducts() {
                 iupac_name: 'Methanol',
                 cas_number: '67-56-1',
                 purity_percentage: 99.9,
-                grade: Grade.PHARMA, // Fixed: PHARMACEUTICAL -> PHARMA
+                grade: Grade.PHARMA,
                 moq: 5,
                 description: 'Pharmaceutical grade methanol.',
                 priceHint: 450
