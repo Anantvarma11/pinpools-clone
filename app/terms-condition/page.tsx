@@ -2,8 +2,8 @@ export default function TermsPage() {
     return (
         <div className="bg-white py-20">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 className="text-3xl font-bold text-slate-900 mb-8">Terms and Conditions</h1>
-                <div className="prose prose-slate">
+                <h1 className="text-3xl font-bold text-black mb-8">Terms and Conditions</h1>
+                <div className="prose [&_*]:text-black">
                     <h2>1. Scope of Application</h2>
                     <p>These General Terms and Conditions (GTC) apply to all business relationships between ChemSphere Nexus GmbH and its customers.</p>
                     <h2>2. Registration and User Account</h2>

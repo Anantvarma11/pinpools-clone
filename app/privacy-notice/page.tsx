@@ -2,8 +2,8 @@ export default function PrivacyPage() {
     return (
         <div className="bg-white py-20">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 className="text-3xl font-bold text-slate-900 mb-8">Privacy Notice</h1>
-                <div className="prose prose-slate">
+                <h1 className="text-3xl font-bold text-black mb-8">Privacy Notice</h1>
+                <div className="prose [&_*]:text-black">
                     <p>Last updated: November 29, 2025</p>
                     <h2>1. Data Protection at a Glance</h2>
                     <p>General information: The following notes provide a simple overview of what happens to your personal data when you visit our website.</p>

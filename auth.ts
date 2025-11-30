@@ -1,10 +1,8 @@
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { PrismaAdapter } from '@auth/prisma-adapter';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '@/lib/prisma';
 import { authConfig } from './auth.config';
-
-const prisma = new PrismaClient();
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
     ...authConfig,
@@ -33,8 +31,31 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                         role: "buyer",
                     };
                 }
+
+                if (credentials.email === "seller@chem.com" && credentials.password === "secure123") {
+                    return {
+                        id: "2",
+                        name: "Test Seller",
+                        email: "seller@chem.com",
+                        role: "seller",
+                    };
+                }
                 return null;
             },
         }),
     ],
+    callbacks: {
+        async jwt({ token, user }) {
+            if (user) {
+                token.role = user.role;
+            }
+            return token;
+        },
+        async session({ session, token }) {
+            if (session.user && token.role) {
+                session.user.role = token.role as string;
+            }
+            return session;
+        },
+    },
 });

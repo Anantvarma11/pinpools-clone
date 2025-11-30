@@ -16,10 +16,14 @@ model Product {
   purity_percentage   Float
   grade               Grade
   sustainability_rating Int
+  description         String?
+  moq                 Float?
+  priceHint           Decimal?
   companyId           String?
   company             Company? @relation(fields: [companyId], references: [id])
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
+  rfxs                RFX[]
 
   @@unique([cas_number, grade])
 }
@@ -67,6 +71,9 @@ model User {
   companyId String
   company   Company  @relation(fields: [companyId], references: [id])
   tenders   Tender[]
+  rfxs      RFX[]
+  bids      BidVersion[]
+  invites   RFXInvite[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -105,4 +112,54 @@ enum CompanyType {
 enum UserRole {
   ADMIN
   USER
+}
+
+model RFX {
+  id        String      @id @default(uuid())
+  productId String
+  product   Product     @relation(fields: [productId], references: [id])
+  title     String
+  quantity  Float
+  unit      String
+  ownerId   String
+  owner     User        @relation(fields: [ownerId], references: [id])
+  mode      RFXMode
+  deadline  DateTime
+  createdAt DateTime    @default(now())
+  bids      BidVersion[]
+  invites   RFXInvite[]
+}
+
+model BidVersion {
+  id        String    @id @default(uuid())
+  rfxId     String
+  rfx       RFX       @relation(fields: [rfxId], references: [id])
+  authorId  String
+  author    User      @relation(fields: [authorId], references: [id])
+  amount    Decimal
+  termsJson Json
+  status    BidStatus
+  txHash    String?
+  saltHash  String?
+  createdAt DateTime  @default(now())
+}
+
+model RFXInvite {
+  id            String @id @default(uuid())
+  rfxId         String
+  rfx           RFX    @relation(fields: [rfxId], references: [id])
+  invitedUserId String
+  invitedUser   User   @relation(fields: [invitedUserId], references: [id])
+}
+
+enum RFXMode {
+  PUBLIC
+  PRIVATE
+}
+
+enum BidStatus {
+  DRAFT
+  SUBMITTED
+  ACCEPTED
+  REJECTED
 }

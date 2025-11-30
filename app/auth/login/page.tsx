@@ -3,6 +3,7 @@
 import { loginWithCredentials, loginWithGithub } from '@/app/actions/authenticate';
 import { Hexagon, Github } from 'lucide-react';
 import { useFormStatus } from 'react-dom';
+import { DemoLogin } from '@/components/DemoLogin';
 
 function LoginButton() {
     const { pending } = useFormStatus();
@@ -98,6 +99,8 @@ export default function LoginPage() {
                             </form>
                         </div>
                     </div>
+
+                    <DemoLogin />
                 </div>
             </div>
         </div>

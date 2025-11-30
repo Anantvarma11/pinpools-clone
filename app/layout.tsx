@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Menu, X, Hexagon } from 'lucide-react';
 import { ThemeProvider } from '@/components/theme-provider';
 import { ModeToggle } from '@/components/mode-toggle';
+import { Toaster } from '@/components/ui/toaster';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -36,6 +37,7 @@ export default async function RootLayout({
           <Navbar user={session?.user} />
 
           <main>{children}</main>
+          <Toaster />
 
           <footer className="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">

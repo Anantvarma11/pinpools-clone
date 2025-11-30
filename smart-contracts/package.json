@@ -1,0 +1,12 @@
+{
+    "name": "smart-contracts",
+    "version": "1.0.0",
+    "description": "Smart contracts for ChemSphere Nexus",
+    "scripts": {
+        "test": "hardhat test"
+    },
+    "devDependencies": {
+        "hardhat": "^2.19.0",
+        "@nomicfoundation/hardhat-toolbox": "^4.0.0"
+    }
+}

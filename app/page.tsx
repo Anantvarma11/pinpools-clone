@@ -46,15 +46,15 @@ export default function Home() {
       </section>
 
       {/* Value Props */}
-      <section className="py-20">
+      <section className="py-20 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="text-center">
               <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle className="w-8 h-8 text-teal-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Automated Sourcing</h3>
-              <p className="text-black">
+              <h3 className="text-xl font-bold text-white mb-4">Automated Sourcing</h3>
+              <p className="text-slate-400">
                 Launch RFQs in minutes. Our smart matching algorithm connects you with pre-vetted suppliers instantly.
               </p>
             </div>
@@ -62,10 +62,10 @@ export default function Home() {
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <TrendingUp className="w-8 h-8 text-blue-600" />
               </div>
-              <Link href="/product/data-cube" className="hover:text-teal-600 transition-colors">
-                <h3 className="text-xl font-bold text-slate-900 mb-4">Market Intelligence</h3>
+              <Link href="/product/data-cube" className="hover:text-teal-400 transition-colors">
+                <h3 className="text-xl font-bold text-white mb-4">Market Intelligence</h3>
               </Link>
-              <p className="text-black">
+              <p className="text-slate-400">
                 Access real-time price benchmarks and historical data to negotiate better contracts.
               </p>
             </div>
@@ -73,14 +73,14 @@ export default function Home() {
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <ShieldCheck className="w-8 h-8 text-purple-600" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Verified Quality</h3>
-              <p className="text-black">
+              <h3 className="text-xl font-bold text-white mb-4">Verified Quality</h3>
+              <p className="text-slate-400">
                 Every supplier is audited. Ensure compliance with REACH, ISO, and sustainability standards.
               </p>
             </div>
-          </div >
-        </div >
-      </section >
+          </div>
+        </div>
+      </section>
 
       {/* CTA Blocks */}
       < section className="py-20 bg-slate-50" >

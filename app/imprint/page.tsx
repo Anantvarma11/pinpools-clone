@@ -2,8 +2,8 @@ export default function ImprintPage() {
     return (
         <div className="bg-white py-20">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 className="text-3xl font-bold text-slate-900 mb-8">Imprint</h1>
-                <div className="prose prose-slate">
+                <h1 className="text-3xl font-bold text-black mb-8">Imprint</h1>
+                <div className="prose [&_*]:text-slate-900">
                     <p><strong>ChemSphere Nexus GmbH</strong></p>
                     <p>Chemical Innovation Park 1<br />10115 Berlin, Germany</p>
                     <p><strong>Represented by:</strong><br />Jane Doe, CEO<br />John Smith, CTO</p>
