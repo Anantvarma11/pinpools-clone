@@ -23,21 +23,21 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             async authorize(credentials) {
                 console.log("Checking credentials:", credentials); // Debug log
 
-                if (credentials.email === "buyer@chem.com" && credentials.password === "secure123") {
-                    return {
-                        id: "1",
-                        name: "Test Buyer",
-                        email: "buyer@chem.com",
-                        role: "buyer",
-                    };
-                }
+                if (!credentials?.email || !credentials?.password) return null;
 
-                if (credentials.email === "seller@chem.com" && credentials.password === "secure123") {
+                const user = await prisma.user.findUnique({
+                    where: { email: credentials.email as string }
+                });
+
+                if (!user) return null;
+
+                // Mock password check
+                if (credentials.password === "secure123") {
                     return {
-                        id: "2",
-                        name: "Test Seller",
-                        email: "seller@chem.com",
-                        role: "seller",
+                        id: user.id,
+                        name: user.name,
+                        email: user.email,
+                        role: user.role,
                     };
                 }
                 return null;

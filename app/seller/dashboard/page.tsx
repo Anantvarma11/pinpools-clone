@@ -29,6 +29,14 @@ export default async function SellerDashboardPage() {
 
     const pendingBidsCount = publicRfxs.length; // Simplified for now
 
+    // Fetch Seller's Products
+    const myProducts = await prisma.product.findMany({
+        where: {
+            company: { users: { some: { id: session.user.id } } }
+        },
+        orderBy: { createdAt: 'desc' }
+    });
+
     return (
         <div className="min-h-screen bg-slate-50/50">
             <div className="container mx-auto py-8 px-4 space-y-8">
@@ -82,6 +90,48 @@ export default async function SellerDashboardPage() {
                         </CardContent>
                     </Card>
                 </div>
+
+                {/* My Listings Section */}
+                <section className="space-y-4">
+                    <h2 className="text-xl font-semibold text-slate-800 flex items-center gap-2">
+                        My Listings
+                        <span className="text-sm font-normal text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">
+                            {myProducts.length}
+                        </span>
+                    </h2>
+                    <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                        {myProducts.length === 0 ? (
+                            <div className="text-center py-12 px-4">
+                                <p className="text-slate-500">You haven't listed any products yet.</p>
+                            </div>
+                        ) : (
+                            <div className="overflow-x-auto">
+                                <table className="w-full text-left text-sm">
+                                    <thead className="bg-slate-50 border-b border-slate-200">
+                                        <tr>
+                                            <th className="px-6 py-4 font-semibold text-slate-700">Product Name</th>
+                                            <th className="px-6 py-4 font-semibold text-slate-700">CAS Number</th>
+                                            <th className="px-6 py-4 font-semibold text-slate-700">Grade</th>
+                                            <th className="px-6 py-4 font-semibold text-slate-700">MOQ</th>
+                                            <th className="px-6 py-4 font-semibold text-slate-700">Price Hint</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="divide-y divide-slate-100">
+                                        {myProducts.map((product) => (
+                                            <tr key={product.id} className="hover:bg-slate-50/50 transition-colors">
+                                                <td className="px-6 py-4 font-medium text-slate-900">{product.iupac_name}</td>
+                                                <td className="px-6 py-4 text-slate-600">{product.cas_number}</td>
+                                                <td className="px-6 py-4 text-slate-600">{product.grade}</td>
+                                                <td className="px-6 py-4 text-slate-600">{product.moq} Tons</td>
+                                                <td className="px-6 py-4 text-slate-600">${product.priceHint?.toString()}/Ton</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        )}
+                    </div>
+                </section>
 
                 {/* Live Opportunities Section */}
                 <section className="space-y-4">

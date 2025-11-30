@@ -17,8 +17,12 @@ const productSchema = z.object({
 });
 
 export async function createProduct(formData: FormData) {
+    console.log("createProduct action started");
     const session = await auth();
-    if (!session?.user || session.user.role !== 'seller') {
+    console.log("Session:", JSON.stringify(session, null, 2));
+
+    if (!session?.user?.id || session.user.role !== 'seller') {
+        console.error("Unauthorized access attempt");
         throw new Error("Unauthorized");
     }
 
@@ -28,8 +32,10 @@ export async function createProduct(formData: FormData) {
         where: { id: session.user.id },
         select: { companyId: true }
     });
+    console.log("User found:", user);
 
     if (!user?.companyId) {
+        console.error("User has no company ID");
         throw new Error("User does not belong to a company");
     }
 
@@ -42,18 +48,26 @@ export async function createProduct(formData: FormData) {
         purity_percentage: formData.get('purity_percentage'),
         grade: formData.get('grade'),
     };
+    console.log("Raw form data:", rawData);
 
-    const validatedData = productSchema.parse(rawData);
+    try {
+        const validatedData = productSchema.parse(rawData);
+        console.log("Validation successful");
 
-    await prisma.product.create({
-        data: {
-            ...validatedData,
-            synonyms: validatedData.iupac_name, // Default synonym
-            sustainability_rating: 0, // Default
-            companyId: user.companyId,
-        },
-    });
+        const newProduct = await prisma.product.create({
+            data: {
+                ...validatedData,
+                synonyms: validatedData.iupac_name, // Default synonym
+                sustainability_rating: 0, // Default
+                companyId: user.companyId,
+            },
+        });
+        console.log("Product created:", newProduct);
 
-    revalidatePath('/seller/dashboard');
-    redirect('/seller/dashboard');
+        revalidatePath('/seller/dashboard');
+        return { success: true };
+    } catch (error) {
+        console.error("Error creating product:", error);
+        throw error; // Re-throw to be caught by client
+    }
 }

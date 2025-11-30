@@ -33,6 +33,7 @@ export function OfferModal({ rfxId, trigger }: OfferModalProps) {
             const res = await fetch(`/api/bids/${rfxId}/offer`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
+                credentials: "include",
                 body: JSON.stringify({
                     amount: Number(formData.amount),
                     termsJson: { text: formData.terms }, // Simple wrapper for now
@@ -45,8 +46,8 @@ export function OfferModal({ rfxId, trigger }: OfferModalProps) {
             }
 
             toast({
-                title: "Offer Placed Successfully",
-                description: "Your offer has been recorded on the blockchain.",
+                title: "Offer Submitted",
+                description: "Offer Submitted and Hashed to Blockchain!",
                 className: "bg-green-50 border-green-200 text-green-800",
             })
             setOpen(false)

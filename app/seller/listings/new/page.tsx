@@ -15,12 +15,16 @@ export default function NewListingPage() {
 
     async function handleSubmit(formData: FormData) {
         try {
-            await createProduct(formData);
-            toast({
-                title: "Success",
-                description: "Product listed successfully",
-            });
-            router.push('/seller/dashboard');
+            const result = await createProduct(formData);
+            if (result && result.success) {
+                toast({
+                    title: "Success",
+                    description: "Product listed successfully",
+                });
+                router.push('/seller/dashboard');
+            } else {
+                throw new Error("Submission failed");
+            }
         } catch (error) {
             toast({
                 title: "Error",
