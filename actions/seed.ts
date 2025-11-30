@@ -6,44 +6,68 @@ import { revalidatePath } from 'next/cache';
 
 export async function seedProducts() {
     try {
-        // Check if we already have products
-        const count = await prisma.product.count();
-        if (count > 0) {
-            return { success: false, message: 'Products already exist' };
-        }
+        console.log('Starting seed process...');
 
-        // Find or create a seller
-        let seller = await prisma.user.findFirst({
-            where: { role: UserRole.SELLER },
-            include: { company: true }
-        });
+        // 1. Ensure Users (Admin, Seller, Buyer) exist
 
-        if (!seller) {
-            // Create a demo seller if none exists
-            const company = await prisma.company.create({
+        // Admin
+        let admin = await prisma.user.findFirst({ where: { role: UserRole.ADMIN } });
+        if (!admin) {
+            admin = await prisma.user.create({
                 data: {
-                    name: 'ChemCorp International',
-                    type: CompanyType.SUPPLIER,
+                    name: 'Admin User',
+                    email: 'admin@example.com',
+                    password: '$2b$10$epWg/y.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ', // Dummy hash
+                    role: UserRole.ADMIN,
+                    company: { create: { name: 'Admin Corp', type: CompanyType.BUYER } } // Admin needs company? Schema says yes (companyId is required)
                 }
             });
+            console.log('Created admin user:', admin);
+        }
 
+        // Seller
+        let seller = await prisma.user.findFirst({ where: { role: UserRole.SELLER }, include: { company: true } });
+        if (!seller) {
             seller = await prisma.user.create({
                 data: {
-                    email: 'seller@chem.com',
-                    password: '$2b$10$epWg/y.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ', // Dummy hash
-                    name: 'Demo Seller',
+                    name: 'Seller User',
+                    email: 'seller@example.com',
+                    password: '$2b$10$epWg/y.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ',
                     role: UserRole.SELLER,
-                    companyId: company.id
+                    company: { create: { name: 'Sample Seller Company', type: CompanyType.SUPPLIER } }
                 },
                 include: { company: true }
             });
+            console.log('Created seller user:', seller);
         }
 
-        if (!seller.companyId) {
-            return { success: false, message: 'Seller has no company' };
+        // Buyer
+        let buyer = await prisma.user.findFirst({ where: { role: UserRole.BUYER } });
+        if (!buyer) {
+            buyer = await prisma.user.create({
+                data: {
+                    name: 'Buyer User',
+                    email: 'buyer@example.com',
+                    password: '$2b$10$epWg/y.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ',
+                    role: UserRole.BUYER,
+                    company: { create: { name: 'Sample Buyer Company', type: CompanyType.BUYER } }
+                }
+            });
+            console.log('Created buyer user:', buyer);
         }
 
-        // Create sample products
+        // 2. Seed Products (if not already present)
+        const productCount = await prisma.product.count();
+        if (productCount > 0) {
+            console.log('Products already exist, skipping product seed.');
+            return { success: true, message: 'Users seeded. Products already exist.' };
+        }
+
+        if (!seller || !seller.companyId) {
+            // Should not happen as we created it above
+            return { success: false, message: 'Seller not found for product seeding' };
+        }
+
         const products = [
             {
                 iupac_name: 'Acetone',
@@ -111,7 +135,8 @@ export async function seedProducts() {
         }
 
         revalidatePath('/marketplace');
-        return { success: true, message: 'Seeded 5 products' };
+        console.log('Seeding complete!');
+        return { success: true, message: 'Seeded users and 5 products' };
     } catch (error) {
         console.error('Seeding failed:', error);
         return { success: false, message: 'Seeding failed' };
