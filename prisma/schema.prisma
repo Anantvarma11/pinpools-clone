@@ -112,6 +112,8 @@ enum CompanyType {
 enum UserRole {
   ADMIN
   USER
+  SELLER
+  BUYER
 }
 
 model RFX {

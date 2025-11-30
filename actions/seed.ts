@@ -1,7 +1,7 @@
 'use server';
 
 import { prisma } from '@/lib/prisma';
-import { UserRole } from '@prisma/client';
+import { UserRole, CompanyType, Grade } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
 export async function seedProducts() {
@@ -14,16 +14,16 @@ export async function seedProducts() {
 
         // Find or create a seller
         let seller = await prisma.user.findFirst({
-            where: { role: UserRole.USER },
+            where: { role: UserRole.SELLER },
             include: { company: true }
         });
 
         if (!seller) {
-            // Create a demo seller if none exists (should exist from seed.ts but just in case)
+            // Create a demo seller if none exists
             const company = await prisma.company.create({
                 data: {
                     name: 'ChemCorp International',
-                    type: 'SUPPLIER',
+                    type: CompanyType.SUPPLIER,
                 }
             });
 
@@ -32,7 +32,7 @@ export async function seedProducts() {
                     email: 'seller@chem.com',
                     password: '$2b$10$epWg/y.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ', // Dummy hash
                     name: 'Demo Seller',
-                    role: UserRole.USER,
+                    role: UserRole.SELLER,
                     companyId: company.id
                 },
                 include: { company: true }
@@ -49,7 +49,7 @@ export async function seedProducts() {
                 iupac_name: 'Acetone',
                 cas_number: '67-64-1',
                 purity_percentage: 99.5,
-                grade: 'TECHNICAL',
+                grade: Grade.TECHNICAL,
                 moq: 10,
                 description: 'High purity acetone for industrial use.',
                 priceHint: 850
@@ -58,7 +58,7 @@ export async function seedProducts() {
                 iupac_name: 'Sulfuric Acid',
                 cas_number: '7664-93-9',
                 purity_percentage: 98.0,
-                grade: 'TECHNICAL',
+                grade: Grade.TECHNICAL,
                 moq: 20,
                 description: 'Concentrated sulfuric acid.',
                 priceHint: 120
@@ -67,7 +67,7 @@ export async function seedProducts() {
                 iupac_name: 'Methanol',
                 cas_number: '67-56-1',
                 purity_percentage: 99.9,
-                grade: 'PHARMACEUTICAL',
+                grade: Grade.PHARMA, // Fixed: PHARMACEUTICAL -> PHARMA
                 moq: 5,
                 description: 'Pharmaceutical grade methanol.',
                 priceHint: 450
@@ -76,7 +76,7 @@ export async function seedProducts() {
                 iupac_name: 'Sodium Hydroxide',
                 cas_number: '1310-73-2',
                 purity_percentage: 50.0,
-                grade: 'TECHNICAL',
+                grade: Grade.TECHNICAL,
                 moq: 25,
                 description: 'Caustic soda solution 50%.',
                 priceHint: 300
@@ -85,7 +85,7 @@ export async function seedProducts() {
                 iupac_name: 'Ethanol',
                 cas_number: '64-17-5',
                 purity_percentage: 96.0,
-                grade: 'FOOD',
+                grade: Grade.FOOD,
                 moq: 1,
                 description: 'Food grade ethanol.',
                 priceHint: 900
@@ -95,9 +95,13 @@ export async function seedProducts() {
         for (const p of products) {
             await prisma.product.create({
                 data: {
-                    ...p,
-                    // @ts-ignore - Enum handling might be tricky with strings
+                    iupac_name: p.iupac_name,
+                    cas_number: p.cas_number,
+                    purity_percentage: p.purity_percentage,
                     grade: p.grade,
+                    moq: p.moq,
+                    description: p.description,
+                    priceHint: p.priceHint,
                     companyId: seller.companyId,
                     ec_number: '000-000-0', // Placeholder
                     synonyms: p.iupac_name,
