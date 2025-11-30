@@ -1,6 +1,7 @@
 'use server';
 
 import { prisma } from '@/lib/prisma';
+import { UserRole } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
 export async function seedProducts() {
@@ -13,7 +14,7 @@ export async function seedProducts() {
 
         // Find or create a seller
         let seller = await prisma.user.findFirst({
-            where: { role: 'USER' },
+            where: { role: UserRole.USER },
             include: { company: true }
         });
 
@@ -31,7 +32,7 @@ export async function seedProducts() {
                     email: 'seller@chem.com',
                     password: '$2b$10$epWg/y.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ.QdZ', // Dummy hash
                     name: 'Demo Seller',
-                    role: 'USER',
+                    role: UserRole.USER,
                     companyId: company.id
                 },
                 include: { company: true }
